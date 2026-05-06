@@ -23,7 +23,7 @@ public class BikeController {
         this.bikeService = bikeService;
     }
 
-    @GetMapping("{serialNumber}")
+    @GetMapping("/{serialNumber}")
     public Bicycle getBicycleBySerialNumber(@PathVariable String serialNumber) {
         return bikeService.getBicycleBySerialNumber(serialNumber);
     }
