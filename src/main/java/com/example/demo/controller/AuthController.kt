@@ -13,7 +13,7 @@ class AuthController(private val jwtService: JwtService) {
     fun login(@RequestBody req: LoginRequest): LoginResponse {
         if ("admin" == req.username && "pass" == req.password) {
             val token = jwtService.generateToken(req.username)
-            return LoginResponse(token, "admin")
+            return LoginResponse(token ?: throw RuntimeException("no token was given"), "admin")
         }
 
         throw RuntimeException("Invalid login")
